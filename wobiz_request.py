@@ -32,6 +32,7 @@ def make_request(url, data, app_secret):
     data = sign_parameters(data, app_secret)
     data = urllib.urlencode(data).encode()
 
+    print("Post Data: %s" % data)
     req = urllib2.Request(url, data=data)
 
     response = urllib2.urlopen(req)
