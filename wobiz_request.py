@@ -6,7 +6,7 @@ import hashlib
 import argparse
 
 
-def sign_parameters(params: dict, secret: str) -> str:
+def sign_parameters(params, secret):
     # params need to be sorted by key
     ordered_params = sorted(params.items())
     tmp_data = []
@@ -21,7 +21,7 @@ def sign_parameters(params: dict, secret: str) -> str:
     return params
 
 
-def make_request(url: str, data: dict, app_secret: str) -> None:
+def make_request(url, data, app_secret):
     print(url)
     print(data)
     print(app_secret)
