@@ -32,9 +32,7 @@ def make_request(url, data, app_secret):
     data = sign_parameters(data, app_secret)
     data = urllib.urlencode(data).encode()
 
-    headers = {'Content-type': 'application-json'}
-
-    req = urllib2.Request(url, data=data, headers=headers)
+    req = urllib2.Request(url, data=data)
 
     response = urllib2.urlopen(req)
     print(response.read())
