@@ -29,7 +29,7 @@ def make_request(url, data, app_secret):
     try:
         data = json.loads(data)
     except Exception as ex:
-        print(f"Post Data inválido")
+        print("Post Data inválido: {}".format(ex))
         exit(0)
 
     data = sign_parameters(data, app_secret)
