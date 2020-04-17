@@ -12,7 +12,7 @@ def sign_parameters(params, secret):
     tmp_data = []
 
     for key, value in ordered_params:
-        tmp_data.append(f"{key}:{value}")
+        tmp_data.append("{0}:{1}".format(key, value))
 
     request_data_string = "|".join(tmp_data)
     request_data_string += secret
