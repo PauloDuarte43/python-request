@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from urllib import request, parse
+import urllib
+import urllib2
 import json
 import hashlib
 import argparse
@@ -22,10 +23,6 @@ def sign_parameters(params, secret):
 
 
 def make_request(url, data, app_secret):
-    print(url)
-    print(data)
-    print(app_secret)
-
     try:
         data = json.loads(data)
     except Exception as ex:
@@ -33,11 +30,11 @@ def make_request(url, data, app_secret):
         exit(0)
 
     data = sign_parameters(data, app_secret)
-    data = parse.urlencode(data).encode()
+    data = urllib.urlencode(data).encode()
 
-    req = request.Request("http://localhost:8080", data=data)
+    req = urllib2.Request("http://localhost:8080", data=data)
 
-    response = request.urlopen(req)
+    response = urllib2.urlopen(req)
     print(response.read())
 
 
