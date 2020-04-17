@@ -34,7 +34,7 @@ def make_request(url, data, app_secret):
 
     headers = {'Content-type': 'application-json'}
 
-    req = urllib2.Request("http://localhost:8080", data=data, headers=headers)
+    req = urllib2.Request(url, data=data, headers=headers)
 
     response = urllib2.urlopen(req)
     print(response.read())
