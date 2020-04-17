@@ -33,10 +33,14 @@ def make_request(url, data, app_secret):
     data = urllib.urlencode(data).encode()
 
     print("Post Data: %s" % data)
-    req = urllib2.Request(url, data=data)
+    try:
+        req = urllib2.Request(url, data=data)
 
-    response = urllib2.urlopen(req)
-    print(response.read())
+        response = urllib2.urlopen(req)
+        print(response.read())
+    except urllib2.HTTPError as e:
+        error_message = e.read()
+        print(error_message)
 
 
 if __name__ == "__main__":
